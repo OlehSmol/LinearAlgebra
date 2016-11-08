@@ -1,0 +1,351 @@
+html {
+    font-size: 10px;
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    height: 5rem;
+    /*    border-bottom: 0.1rem solid black;*/
+    color: white;
+    background-color: #404040;
+    /*#3d3d29;/*#e0e0d1;*/
+    /*gray;*/
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+}
+
+header .container {
+    padding-left: 10rem;
+    padding-right: 10rem;
+}
+
+.logo,
+.navbar {
+    display: inline-block;
+}
+
+.logo {
+/*    color: #009933;*/
+    padding: 0.5rem 0;
+    cursor: none;
+}
+
+.logo-description {
+    color: white;
+    opacity: 0;
+    display: none
+}
+
+.logo:hover .logo-description {
+    opacity: 1;
+    display: block;
+    transition: 0.3s opacity ease;
+}
+
+.navbar {
+    float: right;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+.navbar li {
+    padding: 0.5rem 1rem;
+    margin: 0 1rem;
+    display: inline-block;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.navbar li:hover {
+    color: black;
+    background-color: #bfbfbf;
+    /*#ccccb3;*/
+}
+
+.left-side {
+    height: 100%;
+    width: 22rem;
+    background-color: #e6e6e6;
+    /*#e0e0d1;*/
+    /*    border-right: 0.1rem solid black;*/
+    position: absolute;
+    top: 9rem;
+    left: 0;
+}
+
+.left-menu {
+    /*    height: auto;*/
+    width: 22rem;
+    /*    padding-top: 2rem;*/
+    position: fixed;
+    top: 9rem;
+    left: 0;
+    overflow-y: visible;
+}
+
+.left-menu h4 {
+    padding: 2rem 1.5rem;
+}
+
+.left-menu li {
+    width: 100%;
+    padding: 1rem 0;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.left-menu li:hover {
+    background-color: #bfbfbf;
+    /*#ccccb3;/*#009933;*/
+}
+
+.left-menu li.selected {
+    color: white;
+    background-color: #009933;
+    /*#404040;/*#3d3d29;/**/
+}
+
+.left-menu li.selected p.small {
+    opacity: 1;
+    display: block;
+}
+
+.left-menu li div {
+    padding: 0 0 0 1.5rem;
+}
+
+.left-menu li p.small {
+    opacity: 0;
+    display: none;
+}
+
+.left-menu li:hover p.small {
+    opacity: 1;
+    display: block;
+}
+
+.main {
+    font-size: 0;
+    padding: 2rem 0;
+}
+
+.container {
+    padding-left: 24rem;
+    padding-right: 24rem;
+}
+
+#input-container p {
+    display: inline-block;
+}
+
+#matrix-size {
+    font-size: 1.4rem;
+    margin-left: 1rem;
+    margin-bottom: 2rem;
+}
+
+.matrix{
+    display: inline-block;
+    border-collapse: collapse;
+}
+
+.matrix td {
+    border: 1px solid black;
+/*    border-collapse: collapse;*/
+}
+
+.matrix td input {
+    height: 5rem;
+    width: 5rem;
+    font-size: 1.8rem;
+    text-align: center;
+    border: none;
+    outline: none;
+}
+
+.matrix td input:hover {
+    background-color: beige;
+}
+
+.matrix td input::-webkit-input-placeholder {
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.matrix td input::-moz-placeholder {
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+
+/* Firefox 19+ */
+
+.matrix td input:-moz-placeholder {
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+
+/* Firefox 18- */
+
+.matrix td input:-ms-input-placeholder {
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.matrix td input:focus::-moz-placeholder {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.matrix td input:focus::-webkit-input-placeholder {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.matrix td input:focus:-moz-placeholder {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.matrix td input:focus:-ms-input-placeholder {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.button-container {
+    width: inherit;
+    /*    text-align: right;*/
+}
+
+#submit {
+    font-size: 1.8rem;
+    /*    border-radius: 1rem;*/
+    outline: none;
+    /*    text-align: center;*/
+}
+
+
+/*
+ * -------------------------
+ *       Typography
+ * -------------------------
+ */
+
+p {
+    font-size: 1.8rem;
+    font-family: 'Open Sans', sans-serif;
+    /*    color: $colorText;*/
+    margin: 0;
+}
+
+.small {
+    font-size: 1.4rem;
+}
+
+h1,
+h2,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    /*    color: $colorText;*/
+}
+
+h1 {
+    font-size: 4.8rem;
+    font-family: 'Merriweather', serif;
+    margin: 0;
+}
+
+h2 {
+    font-size: 3.6rem;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+}
+
+h3 {
+    font-size: 2.4rem;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+}
+
+h4 {
+    font-size: 2.2rem;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+}
+
+h5 {
+    font-size: 1.4rem;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+}
+
+h6 {
+    font-size: 1.4rem;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+}
+
+li {
+    font-size: 1.8rem;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+/*
+ * -------------------------
+ *       Buttons
+ * -------------------------
+ */
+
+.btn {
+    width: auto;
+    font-size: 1.8rem;
+    border-radius: 4rem;
+    text-align: center;
+    padding: 2rem 4rem;
+    margin: 1.5rem 0;
+    display: inline-block;
+}
+
+.btn:focus,
+.btn:hover {
+    cursor: pointer;
+}
+
+.btn-prime {
+    color: white;
+    border: 0.1rem solid #009933;
+    /*#e0e0d1;*/
+    background-color: #009933;
+    /*#3d3d29;*/
+}
+
+.btn-second {
+    color: white;
+    border: 0.1rem solid #404040;
+    /*#e0e0d1;*/
+    background-color: #404040;
+    /*#3d3d29;*/
+}
+
+.btn-second-outline {
+    border: 0.1rem solid #404040;
+    /*#3d3d29;*/
+    background-color: transparent;
+}
+
+.btn-second-outline:focus,
+.btn-second-outline:hover {
+    background-color: #404040;
+    /*#3d3d29;*/
+}
