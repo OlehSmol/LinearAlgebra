@@ -68,14 +68,14 @@ class Matrix():
 
     def get_steps(self):
         result = ""
-        for l in range(self.steps):
+        for l in range(len(self.steps)):
             matrix = '$\\left(\\begin{matrix}\n'
 
-            for j in range(len(self.steps)):
+            for i in range(len(self.steps[l])):
                 line = ''
-                for i in range(len(self.steps[0])):
-                    line += str(matrix[i][j])
-                    if i != m - 1:
+                for j in range(len(self.steps[l][0])):
+                    line += str(self.steps[l][i][j])
+                    if j != len(self.steps[l][0]) - 1:
                         line += '&'
                     else:
                         line += '\\\\\n'
@@ -87,3 +87,4 @@ class Matrix():
 
 m = Matrix([[1, 2], [3, 4]])
 print(m.is_consistent())
+print(m.get_steps())
