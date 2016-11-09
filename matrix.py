@@ -68,7 +68,3 @@ class Matrix():
 
     def get_steps(self):
         return [i.tolist() for i in self.steps]
-
-m = Matrix([[1, 2], [3, 4]])
-print(m.is_consistent())
-print(m.get_steps())
