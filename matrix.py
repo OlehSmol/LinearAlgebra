@@ -2,7 +2,7 @@ import numpy as np
 
 class Matrix():
     def __init__(self, matrix):
-        self.matrix = matrix
+        self.matrix = np.array(matrix, dtype="float64")
         self.m = len(matrix)
         self.n = len(matrix[0])
 
@@ -64,5 +64,3 @@ class Matrix():
 
         return is_consistent
 
-a = Matrix(np.array([[0, 0, 2], [1, 2, 3]], dtype="float64"))
-print(a.is_consistent())
