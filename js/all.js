@@ -64,6 +64,15 @@ function generateJSONmessage() {
 }
 
 //
+// --------------------------------displayResponse ------------------------------
+//
+
+function displayResponse(response) {
+    "use strict";
+    
+}
+
+//
 // --------------------------------XMLHttpRequest------------------------------
 //
 
@@ -114,6 +123,7 @@ window.onload = function () {
         var onloadMethod = function (response) {
             document.getElementById('submit').innerHTML = "Push me again, I like it";
             document.getElementById('submit').disabled = false;
+            displayResponse(response);
             console.log(response);
         };
 
