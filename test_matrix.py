@@ -71,7 +71,7 @@ class TestMatrix(TestCase):
         self.assertEquals(expected, actual)
 
     def test_is_consistent12(self):
-        n = Matrix(np.array([[1, 1, 1, 1, 1, 1], [2, 2, 2, 2, 2, 2], [3, 3, 3, 3, 3, 3], [4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4]], dtype='float64'))
+        n = Matrix(np.array([[1, 1, 1, 1, 1, 1], [2, 2, 2, 2, 2, 2], [3, 3, 3, 3, 3, 3], [4, 4, 4, 4, 4, 4], [5, 5, 5, 5, 5, 5]], dtype='float64'))
         expected = True
         actual = n.is_consistent()
         self.assertEquals(expected, actual)
