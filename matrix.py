@@ -30,8 +30,10 @@ class Matrix():
                 pivot_row += 1
             if not upper[pivot_row][pivot]:
                 continue
-            upper[pivot], upper[pivot_row] = upper[pivot_row], upper[pivot]
-            divide_pivot = self.matrix[pivot]/upper[pivot][pivot]
+            temp = np.copy(upper[pivot])
+            upper[pivot] = upper[pivot_row]
+            upper[pivot_row] =temp
+            divide_pivot = upper[pivot]/upper[pivot][pivot]
             for row in range(pivot + 1, self.m):
                 if(upper[pivot][pivot] != 0):
                     upper[row] -= divide_pivot*upper[row][pivot]
@@ -55,9 +57,12 @@ class Matrix():
             for column in range(self.m):
                 if matrix[row][column] != 0:
                     is_zero = False
-
+                    break
             if is_zero and matrix[row][-1] != 0:
                 is_consistent = False
                 break
 
         return is_consistent
+
+a = Matrix(np.array([[0, 0, 2], [1, 2, 3]], dtype="float64"))
+print(a.is_consistent())
