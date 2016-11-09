@@ -26,7 +26,7 @@ class Matrix():
         upper = self.matrix
         for pivot in range(self.m - 1):
             divide_pivot = self.matrix[pivot]/upper[pivot][pivot]
-            for row in range(pivot + 1, self.n):
+            for row in range(pivot + 1, self.m):
                 if(upper[pivot][pivot] != 0):
                     upper[row] -= divide_pivot*upper[row][pivot]
         return upper
@@ -38,3 +38,18 @@ class Matrix():
             det *= upper[i][i]
 
         return det
+
+    def isConsistent(self):
+        matrix = self.UFactorization()
+        is_consistent = True
+        for row in range(self.m):
+            is_zero = True
+            for column in range(self.m):
+                if matrix[row][column] != 0:
+                    is_zero = False
+
+            if is_zero and matrix[row][-1] != 0:
+                is_consistent = False
+                break
+
+        return is_consistent
