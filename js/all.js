@@ -69,7 +69,7 @@ function generateJSONmessage() {
 
 function displayResponse(response) {
     "use strict";
-    
+
 }
 
 //
@@ -132,8 +132,8 @@ window.onload = function () {
             document.getElementById('submit').disabled = false;
             console.log(responseMessage);
         };
-        makeXMLrequest('POST', 'http://127.0.0.1:5000/linearalgebra/api/v1.0/consistent', onloadMethod, onerrorMethod, myJSONString);
-        //        makeXMLrequest('POST', 'https://mnitd.pythonanywhere.com/linearalgebra/api/v1.0/consistent', onloadMethod, onerrorMethod, myJSONString);
+        //        makeXMLrequest('POST', 'http://127.0.0.1:5000/linearalgebra/api/v1.0/consistent', onloadMethod, onerrorMethod, myJSONString);
+        makeXMLrequest('POST', 'https://mnitd.pythonanywhere.com/linearalgebra/api/v1.0/consistent', onloadMethod, onerrorMethod, myJSONString);
     };
 };
 
