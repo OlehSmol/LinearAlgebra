@@ -5,6 +5,7 @@ class Matrix():
         self.matrix = np.array(matrix, dtype="float64")
         self.m = len(matrix)
         self.n = len(matrix[0])
+        self.steps = []
 
     def parse_matrix(self, matrix):
         pass
@@ -24,6 +25,7 @@ class Matrix():
 
     def u_factorization(self):
         upper = self.matrix
+        self.steps.append(np.copy(upper))
         for pivot in range(self.m - 1):
             pivot_row = pivot
             while not upper[pivot_row][pivot] and pivot_row < self.m - 1:
@@ -37,7 +39,7 @@ class Matrix():
             for row in range(pivot + 1, self.m):
                 if(upper[pivot][pivot] != 0):
                     upper[row] -= divide_pivot*upper[row][pivot]
-
+            self.steps.append(np.copy(upper))
 
         return upper
 
@@ -64,3 +66,24 @@ class Matrix():
 
         return is_consistent
 
+    def get_steps(self):
+        result = ""
+        for l in range(self.steps):
+            matrix = '$\\left(\\begin{matrix}\n'
+
+            for j in range(len(self.steps)):
+                line = ''
+                for i in range(len(self.steps[0])):
+                    line += str(matrix[i][j])
+                    if i != m - 1:
+                        line += '&'
+                    else:
+                        line += '\\\\\n'
+                matrix += line
+
+            matrix += '\\end{matrix}\\right)$\n'
+            result += matrix
+        return result
+
+m = Matrix([[1, 2], [3, 4]])
+print(m.is_consistent())
