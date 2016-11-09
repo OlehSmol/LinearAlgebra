@@ -29,6 +29,11 @@ function removeMatrix(id) {
     document.getElementById('input-container').removeChild(document.getElementById(id));
 }
 
+function clearContent(id) {
+    "use strict";
+    document.getElementById(id).innerHTML = '';
+}
+
 function generateMatrixTable(m, n, id) {
     "use strict";
     var table = document.createElement('table');
@@ -69,6 +74,14 @@ function generateJSONmessage() {
 
 function displayResponse(response) {
     "use strict";
+    var fillWord = "inconsistent";
+    if (JSON.parse(response) == true) {
+        fillWord = "consistent";
+    } 
+    var message = "The system Ax = b is <span class='bold wrapped'>" + fillWord + "</span> "
+    var p = document.createElement('p');
+    p.innerHTML = message;
+    document.getElementById('solution-description').appendChild(p);
 
 }
 
@@ -117,6 +130,8 @@ window.onload = function () {
         this.innerHTML = "Processing...";
         this.disabled = true;
 
+        clearContent('solution-description');
+        
         var myJSONString = generateJSONmessage();
         console.log(myJSONString);
 

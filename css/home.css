@@ -254,6 +254,9 @@ section {
 .right-side .container {
     text-align: center;
 }
+#solution-description{
+    margin-top: 2rem;
+}
 
 
 /*
@@ -344,6 +347,7 @@ li {
 .btn:focus,
 .btn:hover {
     cursor: pointer;
+    box-shadow:  0 1.2rem 1.4rem 0 rgba(0,0,0,0.24), 0 1.7rem 5rem 0 rgba(0,0,0,0.19);
 }
 
 .btn-prime {
@@ -351,6 +355,7 @@ li {
     border: 0.1rem solid #009933;
     /*#e0e0d1;*/
     background-color: #009933;
+   
     /*#3d3d29;*/
 }
 
@@ -372,4 +377,18 @@ li {
 .btn-second-outline:hover {
     background-color: #404040;
     /*#3d3d29;*/
+}
+
+/*
+ * -------------------------
+ *       Other
+ * -------------------------
+ */
+
+.bold{
+    font-weight: bold;
+}
+.wrapped{
+    background-color: beige;
+    padding: 1.2rem;
 }
