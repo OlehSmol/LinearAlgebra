@@ -67,23 +67,7 @@ class Matrix():
         return is_consistent
 
     def get_steps(self):
-        result = ""
-        for l in range(len(self.steps)):
-            matrix = '$\\left(\\begin{matrix}\n'
-
-            for i in range(len(self.steps[l])):
-                line = ''
-                for j in range(len(self.steps[l][0])):
-                    line += str(self.steps[l][i][j])
-                    if j != len(self.steps[l][0]) - 1:
-                        line += '&'
-                    else:
-                        line += '\\\\\n'
-                matrix += line
-
-            matrix += '\\end{matrix}\\right)$\n'
-            result += matrix
-        return result
+        return [i.tolist() for i in self.steps]
 
 m = Matrix([[1, 2], [3, 4]])
 print(m.is_consistent())
