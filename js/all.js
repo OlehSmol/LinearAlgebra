@@ -2,15 +2,15 @@ console.log("all.js is running");
 
 function readMatrixValue(id) {
     "use strict";
-    var table = document.getElementById(id);
-    var matrix = new Array(table.children.length) //table.children[0].children.length);
+    var table = document.getElementById(id),
+        matrix = new Array(table.children.length); //table.children[0].children.length);
 
     for (var i = 0; i < table.children.length; i++) {
-        var tr = table.children[i];
-        var row = new Array(tr.children.length + 1);
+        var tr = table.children[i],
+            row = new Array(tr.children.length + 1);
         for (var j = 0; j < tr.children.length; j++) {
-            var td = tr.children[j];
-            var val = td.children[0].value;
+            var td = tr.children[j],
+                val = td.children[0].value;
             if (val === "" || Number(val) === NaN) {
                 val = Number(td.children[0].placeholder);
             } else {
@@ -26,13 +26,11 @@ function readMatrixValue(id) {
 
 function removeMatrix(id) {
     "use strict";
-
     document.getElementById('input-container').removeChild(document.getElementById(id));
 }
 
 function generateMatrixTable(m, n, id) {
     "use strict";
-
     var table = document.createElement('table');
     table.id = id;
     table.className = 'matrix';
@@ -52,26 +50,29 @@ function generateMatrixTable(m, n, id) {
     document.getElementById('input-container').appendChild(table);
 }
 
+function generateJSONmessage() {
+    "use strict";
+    var matrix = readMatrixValue('user-matrix'),
+        bVector = readMatrixValue('b-vector');
+    for (var i = 0; i < matrix.length; i++) {
+        matrix[i][matrix[i].length - 1] = bVector[i][0];
+    }
+
+    return JSON.stringify({
+        matrix
+    });
+}
+
+//
+// --------------------------------XMLHttpRequest------------------------------
+//
+
 function makeXMLrequest(method, URI, onloadHandler, onerrorHandler, message) {
     "use strict";
     var xhr = new XMLHttpRequest();
     xhr.open(method, URI, true);
 
-    //    xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
     xhr.setRequestHeader('Content-Type', 'application/json');
-
-    //    xhr.onreadystatechange = function () {
-    //        if (xhr.readyState !== 4) {
-    //            return;
-    //        }
-    //        if (xhr.status !== 200) {
-    //            alert(xhr.status + ': ' + xhr.statusText);
-    //            return;
-    //        } else {
-    //            return xhr.responseText;
-    //        }
-    //
-    //    };
 
     xhr.onload = function () {
         onloadHandler(xhr.response);
@@ -82,13 +83,17 @@ function makeXMLrequest(method, URI, onloadHandler, onerrorHandler, message) {
     xhr.send(message);
 }
 
+//
+// --------------------------------window.onload------------------------------
+//
 window.onload = function () {
     "use strict";
 
-
+    // create and add two tables in main-section
     generateMatrixTable(2, 2, 'user-matrix');
     generateMatrixTable(2, 1, 'b-vector');
 
+    // #matrix-size selector onchange handler
     document.getElementById('matrix-size').onchange = function () {
         var size = this.options[this.selectedIndex].value;
         removeMatrix('user-matrix');
@@ -98,21 +103,13 @@ window.onload = function () {
 
     };
 
+    // #submit button onclick handler
     document.getElementById('submit').onclick = function () {
         this.innerHTML = "Processing...";
         this.disabled = true;
 
-        var matrix = readMatrixValue('user-matrix');
-        var bVector = readMatrixValue('b-vector');
-        for (var i = 0; i < matrix.length; i++) {
-            matrix[i][matrix[i].length - 1] = bVector[i][0];
-        }
-
-        var object = {
-            matrix
-        };
-        var myJsonString = JSON.stringify(object);
-        console.log(myJsonString);
+        var myJSONString = generateJSONmessage();
+        console.log(myJSONString);
 
         var onloadMethod = function (response) {
             document.getElementById('submit').innerHTML = "Push me again, I like it";
@@ -125,8 +122,22 @@ window.onload = function () {
             document.getElementById('submit').disabled = false;
             console.log(responseMessage);
         };
-        makeXMLrequest('POST', 'http://127.0.0.1:5000/linearalgebra/api/v1.0/consistent', onloadMethod, onerrorMethod, myJsonString);
-        //        makeXMLrequest('POST', 'https://mnitd.pythonanywhere.com/linearalgebra/api/v1.0/consistent', onloadMethod, onerrorMethod, myJsonString);
-
+        makeXMLrequest('POST', 'http://127.0.0.1:5000/linearalgebra/api/v1.0/consistent', onloadMethod, onerrorMethod, myJSONString);
+        //        makeXMLrequest('POST', 'https://mnitd.pythonanywhere.com/linearalgebra/api/v1.0/consistent', onloadMethod, onerrorMethod, myJSONString);
     };
 };
+
+//
+// --------------------------------window.onscroll------------------------------
+//
+window.onscroll = function () {
+    "use strict";
+    var headerHeight = 90,
+        scrolled = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrolled >= headerHeight) {
+        document.getElementById("left-menu").className = "left-menu fixed";
+    } else {
+        document.getElementById("left-menu").className = "left-menu";
+    }
+}

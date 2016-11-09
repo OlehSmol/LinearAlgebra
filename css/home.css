@@ -79,14 +79,19 @@ ul {
     left: 0;
 }
 
+
 .left-menu {
     /*    height: auto;*/
     width: 22rem;
     /*    padding-top: 2rem;*/
-    position: fixed;
-    top: 9rem;
+/*    position: absolute;*/
+/*    top: 9rem;*/
+    top: 0;
     left: 0;
     overflow-y: visible;
+}
+.fixed{
+     position: fixed;
 }
 
 .left-menu h4 {
