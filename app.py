@@ -16,7 +16,6 @@ def unsupported_media_type(error=None):
 
     return response
 
-
 @app.route('/linearalgebra/api/v1.0/consistent', methods=['POST', 'OPTIONS'])
 def get_tasks():
     if request.method == 'OPTIONS':
@@ -32,7 +31,10 @@ def get_tasks():
             print(json)
             matrix = json['matrix']
             new = Matrix(matrix)
-            result = new.is_consistent()
+            result = {
+                'consistency': new.is_consistent(),
+                'steps': new.get_steps()
+            }
             response = jsonify(result)
             response.headers.add('Access-Control-Allow-Origin', '*')
             # response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
