@@ -120,6 +120,7 @@ window.onload = function () {
         var size = this.options[this.selectedIndex].value;
         removeMatrix('user-matrix');
         removeMatrix('b-vector');
+        clearContent('solution-description');
         generateMatrixTable(size, size, 'user-matrix');
         generateMatrixTable(size, 1, 'b-vector');
 
@@ -161,8 +162,8 @@ window.onscroll = function () {
         scrolled = window.pageYOffset || document.documentElement.scrollTop;
 
     if (scrolled >= headerHeight) {
-        document.getElementById("left-menu").className = "left-menu fixed";
+        document.getElementById("aside-menu").className = "aside-menu fixed";
     } else {
-        document.getElementById("left-menu").className = "left-menu";
+        document.getElementById("aside-menu").className = "aside-menu";
     }
 }

@@ -31,8 +31,9 @@ header .container {
 
 .logo {
     /*    color: #009933;*/
+    /*    text-align: center;*/
     padding: 0.5rem 0;
-    cursor: none;
+    cursor: pointer;
 }
 
 .logo-description {
@@ -73,17 +74,19 @@ section {
     min-height: 76rem;
 }
 
-.left-side {
+.aside-panel {
     min-height: inherit;
-    width: 22rem;
+    width: 16.5%;
+    /*22rem;*/
     background-color: #e6e6e6;
     /*    top: 9rem;*/
     /*    left: 0;*/
     display: inline-block;
 }
 
-.left-menu {
-    width: 22rem;
+.aside-menu {
+    width: 100%;
+    /*22rem;*/
     /*    padding-top: 2rem;*/
     /*    position: absolute;*/
     /*    top: 9rem;*/
@@ -94,52 +97,54 @@ section {
 }
 
 .fixed {
+    width: 16.5%;
     position: fixed;
 }
 
-.left-menu h4 {
+.aside-menu h4 {
     padding: 2rem 1.5rem;
 }
 
-.left-menu li {
+.aside-menu li {
     width: 100%;
     padding: 1rem 0;
     list-style-type: none;
     cursor: pointer;
 }
 
-.left-menu li:hover {
+.aside-menu li:hover {
     background-color: #bfbfbf;
     /*#ccccb3;/*#009933;*/
 }
 
-.left-menu li.selected {
+.aside-menu li.selected {
     color: white;
     background-color: #009933;
     /*#404040;/*#3d3d29;/**/
 }
 
-.left-menu li.selected p.small {
+.aside-menu li.selected p.small {
     opacity: 1;
     display: block;
 }
 
-.left-menu li div {
+.aside-menu li div {
     padding: 0 0 0 1.5rem;
 }
 
-.left-menu li p.small {
+.aside-menu li p.small {
     opacity: 0;
     display: none;
 }
 
-.left-menu li:hover p.small {
+.aside-menu li:hover p.small {
     opacity: 1;
     display: block;
 }
 
 .main {
     font-size: 0;
+    width: 82.5%;
     /*    padding: 2rem 0;*/
     vertical-align: top;
     display: inline-block;
@@ -152,6 +157,10 @@ section {
     /*24rem;*/
     padding-right: 2rem;
     /*24rem;*/
+}
+
+.left-side {
+    text-align: center;
 }
 
 #input-container p {
@@ -246,15 +255,14 @@ section {
 }
 
 .right-side {
-    max-width: 50%;
-    vertical-align: top;
-    display: inline-block;
+/*    display: inline-block;*/
 }
 
 .right-side .container {
     text-align: center;
 }
-#solution-description{
+
+#solution-description {
     margin-top: 2rem;
 }
 
@@ -347,7 +355,7 @@ li {
 .btn:focus,
 .btn:hover {
     cursor: pointer;
-    box-shadow:  0 1.2rem 1.4rem 0 rgba(0,0,0,0.24), 0 1.7rem 5rem 0 rgba(0,0,0,0.19);
+    box-shadow: 0 1.2rem 1.4rem 0 rgba(0, 0, 0, 0.24), 0 1.7rem 5rem 0 rgba(0, 0, 0, 0.19);
 }
 
 .btn-prime {
@@ -355,7 +363,6 @@ li {
     border: 0.1rem solid #009933;
     /*#e0e0d1;*/
     background-color: #009933;
-   
     /*#3d3d29;*/
 }
 
@@ -379,16 +386,164 @@ li {
     /*#3d3d29;*/
 }
 
+
+/*
+ * -------------------------
+ *       Simple Grid
+ * -------------------------
+ */
+
+.row,
+.col {
+    box-sizing: border-box;
+}
+
+/*-- cleafix hack -- */
+
+.row:before,
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* -sm- (default)
+ * -------------------------
+ */
+
+.col-sm-1,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12 {
+    float: left;
+}
+
+.col-sm-12 {
+    width: 100%;
+}
+
+.col-sm-11 {
+    width: 91.66666667%;
+}
+
+.col-sm-10 {
+    width: 83.33333333%;
+}
+
+.col-sm-9 {
+    width: 75%;
+}
+
+.col-sm-8 {
+    width: 66.66666667%;
+}
+
+.col-sm-7 {
+    width: 58.33333333%;
+}
+
+.col-sm-6 {
+    width: 50%;
+}
+
+.col-sm-5 {
+    width: 41.66666667%;
+}
+
+.col-sm-4 {
+    width: 33.33333333%;
+}
+
+.col-sm-3 {
+    width: 25%;
+}
+
+.col-sm-2 {
+    width: 16.66666667%;
+}
+
+.col-sm-1 {
+    width: 8.33333333%;
+}
+
+
+/* -md-
+ * -------------------------
+ */
+
+@media (min-width: 992px) {
+    .col-md-1,
+    .col-md-2,
+    .col-md-3,
+    .col-md-4,
+    .col-md-5,
+    .col-md-6,
+    .col-md-7,
+    .col-md-8,
+    .col-md-9,
+    .col-md-10,
+    .col-md-11,
+    .col-md-12 {
+        float: left;
+    }
+    .col-md-12 {
+        width: 100%;
+    }
+    .col-md-11 {
+        width: 91.66666667%;
+    }
+    .col-md-10 {
+        width: 83.33333333%;
+    }
+    .col-md-9 {
+        width: 75%;
+    }
+    .col-md-8 {
+        width: 66.66666667%;
+    }
+    .col-md-7 {
+        width: 58.33333333%;
+    }
+    .col-md-6 {
+        width: 50%;
+    }
+    .col-md-5 {
+        width: 41.66666667%;
+    }
+    .col-md-4 {
+        width: 33.33333333%;
+    }
+    .col-md-3 {
+        width: 25%;
+    }
+    .col-md-2 {
+        width: 16.66666667%;
+    }
+    .col-md-1 {
+        width: 8.33333333%;
+    }
+}
+
+
 /*
  * -------------------------
  *       Other
  * -------------------------
  */
 
-.bold{
+.bold {
     font-weight: bold;
 }
-.wrapped{
+
+.wrapped {
     background-color: beige;
     padding: 1.2rem;
 }

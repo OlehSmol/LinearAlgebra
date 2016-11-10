@@ -28,8 +28,8 @@
     </header>
 
     <section>
-        <div class="left-side">
-            <div id="left-menu" class="left-menu">
+        <div class="aside-panel">
+            <div id="aside-menu" class="aside-menu">
 
                 <h4>Our works</h4>
                 <ul>
@@ -67,20 +67,20 @@
             </div>
         </div>
 
-        <div class="main">
-            <div class="container">
-
-                <div id='input-container' style="width: auto;">
-                    <div>
-                        <p>Choose size of matrix:</p>
-                        <select id="matrix-size">
-                            <option value="2">2 x 2</option>
-                            <option value="3">3 x 3</option>
-                            <option value="4">4 x 4</option>
-                            <option value="5">5 x 5</option>
-                        </select>
-                    </div>
-                    <!--
+        <div class="main row">
+            <div class="left-side col col-sm-12 col-md-6">
+                <div class="container">
+                    <div id='input-container' style="width: auto;">
+                        <div>
+                            <p>Choose size of matrix:</p>
+                            <select id="matrix-size">
+                                <option value="2">2 x 2</option>
+                                <option value="3">3 x 3</option>
+                                <option value="4">4 x 4</option>
+                                <option value="5">5 x 5</option>
+                            </select>
+                        </div>
+                        <!--
                 <table id="user-matrix" class="matrix">
                     <tr>
                         <td>
@@ -111,19 +111,19 @@
                         </td>
                     </tr>
                 </table>
--->
+-->                    </div>
+                    <div class="button-container">
+                        <div class="btn btn-prime" id="submit">Push me</div>
+                    </div>
 
                 </div>
-                <div class="button-container">
-                    <div class="btn btn-prime" id="submit">Push me</div>
-                </div>
-
-            </div>
         </div>
-        <div class="right-side">
-            <div class="container">
+
+            <div class="right-side col col-sm-12 col-md-6">
+                <div class="container">
                 <p>Solution</p>
                 <div id="solution-description"></div>
+            </div>
             </div>
         </div>
     </section>
