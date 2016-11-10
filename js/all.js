@@ -71,17 +71,50 @@ function generateJSONmessage() {
 //
 // --------------------------------displayResponse ------------------------------
 //
+function createResponseMatrix(m) {
+    var matrix = document.createElement('div');
+    matrix.className = 'matrix';
+    var matrixContainer = document.createElement('div');
+    matrixContainer.className = 'matrix-container';
+
+    for (var i = 0; i < m.length; i++) {
+        var row = document.createElement('div');
+        row.className = 'matrix-row';
+        for (var j = 0; j < m[i].length; j++) {
+            var col = document.createElement('div');
+            col.className = 'matrix-column';
+            col.innerHTML = m[i][j];
+            row.appendChild(col);
+        }
+        matrixContainer.appendChild(row);
+    }
+    matrix.appendChild(matrixContainer);
+    return matrix;
+}
 
 function displayResponse(response) {
     "use strict";
     var fillWord = "inconsistent";
-    if (JSON.parse(response) == true) {
+    if (JSON.parse(response)) {
         fillWord = "consistent";
-    } 
-    var message = "The system Ax = b is <span class='bold wrapped'>" + fillWord + "</span> "
-    var p = document.createElement('p');
+    }
+    var message = "The system Ax = b is <span class='bold wrapped'>" + fillWord + "</span> ",
+        p = document.createElement('p');
     p.innerHTML = message;
     document.getElementById('solution-description').appendChild(p);
+
+    response = {
+        'matrix': [[[5, 7], [7, 6]], [[1, 2], [4, 5]]]
+    };
+    for (var i = 0; i < response['matrix'].length; i++) {
+        var DOMmatrix = createResponseMatrix(response['matrix'][i]),
+            desc = document.getElementById('solution-description');
+        desc.appendChild(DOMmatrix);
+        var div = document.createElement('div');
+        div.className = 'equal-sign';
+        div.innerHTML = ' ~ ';
+        desc.appendChild(div);
+    }
 
 }
 
@@ -132,7 +165,7 @@ window.onload = function () {
         this.disabled = true;
 
         clearContent('solution-description');
-        
+
         var myJSONString = generateJSONmessage();
         console.log(myJSONString);
 
