@@ -95,25 +95,30 @@ function createResponseMatrix(m) {
 function displayResponse(response) {
     "use strict";
     var fillWord = "inconsistent";
-    if (JSON.parse(response)) {
+    response = JSON.parse(response);
+    if (response['consistency']) {
         fillWord = "consistent";
     }
-    var message = "The system Ax = b is <span class='bold wrapped'>" + fillWord + "</span> ",
-        p = document.createElement('p');
+    var message = "The system Ax = b is <span class='bold wrapped'>" + fillWord + "</span> ";
+    var p = document.createElement('p');
     p.innerHTML = message;
     document.getElementById('solution-description').appendChild(p);
+    
+    p = document.createElement('p');
+    p.innerHTML = "A linear system is consistent if and only if its coefficient matrix has the same rank as does its augmented matrix (the coefficient matrix with an extra column added, that column being the column vector of constants). To check it we find reduced echelon form of matrix by performing gaussian elimination.";
+    document.getElementById('solution-description').appendChild(p);
 
-    response = {
-        'matrix': [[[5, 7], [7, 6]], [[1, 2], [4, 5]]]
-    };
-    for (var i = 0; i < response['matrix'].length; i++) {
-        var DOMmatrix = createResponseMatrix(response['matrix'][i]),
-            desc = document.getElementById('solution-description');
+    for (var i = 0; i < response['steps'].length; i++) {
+        var DOMmatrix = createResponseMatrix(response['steps'][i]);
+        var desc = document.getElementById('solution-description');
         desc.appendChild(DOMmatrix);
-        var div = document.createElement('div');
-        div.className = 'equal-sign';
-        div.innerHTML = ' ~ ';
-        desc.appendChild(div);
+
+        if (i != response['steps'].length - 1) {
+            var eqSign = document.createElement('div');
+            eqSign.className = 'equal-sign';
+            eqSign.innerHTML = ' ~ ';
+            desc.appendChild(eqSign);
+        }
     }
 
 }
@@ -172,8 +177,8 @@ window.onload = function () {
         var onloadMethod = function (response) {
             document.getElementById('submit').innerHTML = "Push me again, I like it";
             document.getElementById('submit').disabled = false;
-            displayResponse(response);
             console.log(response);
+            displayResponse(response);
         };
 
         var onerrorMethod = function (responseMessage) {
