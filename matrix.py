@@ -65,7 +65,8 @@ class Matrix():
                 rank += 1
             if matrix[row][-1] != 0:
                 rank_aug += 1
-
+                
+        return rank == rank_aug
 
 
     def get_steps(self):
