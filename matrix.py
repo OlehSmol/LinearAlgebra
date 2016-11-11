@@ -63,7 +63,8 @@ class Matrix():
                     break
             if not is_zero:
                 rank += 1
-            if matrix[row][-1] != 0:
+                rank_aug += 1
+            if is_zero and matrix[row][-1] != 0:
                 rank_aug += 1
                 
         return rank == rank_aug
