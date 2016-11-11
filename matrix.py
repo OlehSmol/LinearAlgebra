@@ -53,18 +53,20 @@ class Matrix():
 
     def is_consistent(self):
         matrix = self.u_factorization()
-        is_consistent = True
+        rank = 0
+        rank_aug = 0
         for row in range(self.m):
             is_zero = True
-            for column in range(self.m):
+            for column in range(self.n - 1):
                 if matrix[row][column] != 0:
                     is_zero = False
                     break
-            if is_zero and matrix[row][-1] != 0:
-                is_consistent = False
-                break
+            if not is_zero:
+                rank += 1
+            if matrix[row][-1] != 0:
+                rank_aug += 1
 
-        return is_consistent
+
 
     def get_steps(self):
         return [i.tolist() for i in self.steps]
