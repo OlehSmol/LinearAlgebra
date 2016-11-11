@@ -68,6 +68,25 @@ function generateJSONmessage() {
     });
 }
 
+function checkMatrixSize() {
+    var m_selector = document.getElementById('m-size');
+    var n_selector = document.getElementById('n-size');
+
+    var m = m_selector.options[m_selector.selectedIndex].value;
+    var n = n_selector.options[n_selector.selectedIndex].value;
+
+    return [m, n];
+}
+
+function onChangeMatrixSizeHandler() {
+    var size = checkMatrixSize();
+    removeMatrix('user-matrix');
+    removeMatrix('b-vector');
+    clearContent('solution-description');
+    generateMatrixTable(size[0], size[1], 'user-matrix');
+    generateMatrixTable(size[0], 1, 'b-vector');
+}
+
 //
 // --------------------------------displayResponse ------------------------------
 //
@@ -103,7 +122,7 @@ function displayResponse(response) {
     var p = document.createElement('p');
     p.innerHTML = message;
     document.getElementById('solution-description').appendChild(p);
-    
+
     p = document.createElement('p');
     p.innerHTML = "A linear system is consistent if and only if its coefficient matrix has the same rank as does its augmented matrix (the coefficient matrix with an extra column added, that column being the column vector of constants). To check it we find reduced echelon form of matrix by performing gaussian elimination.";
     document.getElementById('solution-description').appendChild(p);
@@ -153,16 +172,12 @@ window.onload = function () {
     generateMatrixTable(2, 2, 'user-matrix');
     generateMatrixTable(2, 1, 'b-vector');
 
-    // #matrix-size selector onchange handler
-    document.getElementById('matrix-size').onchange = function () {
-        var size = this.options[this.selectedIndex].value;
-        removeMatrix('user-matrix');
-        removeMatrix('b-vector');
-        clearContent('solution-description');
-        generateMatrixTable(size, size, 'user-matrix');
-        generateMatrixTable(size, 1, 'b-vector');
+    // #m-size selector onchange handler
+    document.getElementById('m-size').onchange = onChangeMatrixSizeHandler;
 
-    };
+    // #n-size selector onchange handler
+    document.getElementById('n-size').onchange = onChangeMatrixSizeHandler;
+
 
     // #submit button onclick handler
     document.getElementById('submit').onclick = function () {
